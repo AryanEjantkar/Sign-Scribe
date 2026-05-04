@@ -1,0 +1,17 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+
+# Model files (Optional: keep them if you want them on GitHub)
+# asl_model.keras
+# ASL.h5
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/

@@ -1,0 +1,247 @@
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg: #0f172a;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.banner {
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),
+              radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.1), transparent),
+              var(--bg);
+  position: relative;
+}
+
+.navbar {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 140px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5));
+}
+
+.navbar ul {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar ul li {
+  list-style: none;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.navbar ul li a:hover {
+  color: var(--text);
+}
+
+.navbar ul li::after {
+  content: '';
+  height: 2px;
+  width: 0;
+  background: var(--primary);
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+.navbar ul li:hover::after {
+  width: 100%;
+}
+
+.content {
+  width: 90%;
+  max-width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.content h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  background: linear-gradient(to bottom right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Button Styles */
+.btn {
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+}
+
+/* Pro Interpreter Specifics */
+.pro-container {
+  max-width: 1200px;
+  margin: 100px auto 50px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.video-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.webcam-view {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #000;
+}
+
+.canvas-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-online {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent);
+}
+
+.prediction-card {
+  padding: 30px;
+  text-align: center;
+}
+
+.prediction-char {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 10px 0;
+}
+
+.sentence-card {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sentence-display {
+  font-size: 1.5rem;
+  min-height: 100px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px 0;
+  word-wrap: break-word;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 968px) {
+  .pro-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+

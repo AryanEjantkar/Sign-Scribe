@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ASL Webcam</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+
+  <style>
+    body { background:#111; color:white; text-align:center; }
+    video { width:320px; border:2px solid white; }
+  </style>
+</head>
+
+<body>
+  <h1>ASL Recognition</h1>
+
+  <video id="webcam" autoplay playsinline></video>
+  <h2 id="result">Prediction: —</h2>
+
+  <button onclick="startASL()">Start</button>
+  <button onclick="stopASL()">Stop Webcam</button>
+  <script src="asl_realtime.js"></script>
+</body>
+</html>

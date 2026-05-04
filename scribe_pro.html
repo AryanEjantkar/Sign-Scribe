@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignScribe Pro | Live Interpreter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- MediaPipe & TensorFlow.js Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+</head>
+<body style="background: var(--bg);">
+  <nav class="navbar" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 10;">
+    <img src="s.png" class="logo" alt="SignScribe Logo">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="pro-container">
+    <!-- Video Section -->
+    <section class="video-section glass-card">
+      <div class="status-badge status-online" style="position: absolute; top: 20px; left: 20px; z-index: 5;">
+        <div style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent);"></div>
+        Live Detection
+      </div>
+      <video id="webcam" class="webcam-view" autoplay playsinline></video>
+      <canvas id="output" class="canvas-overlay"></canvas>
+      
+      <div id="loading-overlay" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.9); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
+        <div style="width: 40px; height: 40px; border: 3px solid var(--glass-border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <p style="margin-top: 15px; font-weight: 500; color: var(--text-muted);">Initializing AI Engine...</p>
+      </div>
+    </section>
+
+    <!-- Controls & Results Section -->
+    <section class="controls-section">
+      <div class="prediction-card glass-card">
+        <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted); font-weight: 800;">Current Sign</p>
+        <div id="detected-char" class="prediction-char">—</div>
+        <div id="confidence-bar" style="width: 100%; height: 4px; background: var(--glass-border); border-radius: 2px; overflow: hidden; margin-top: 10px;">
+          <div id="confidence-fill" style="width: 0%; height: 100%; background: var(--primary); transition: 0.2s;"></div>
+        </div>
+      </div>
+
+      <div class="sentence-card glass-card">
+        <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted); font-weight: 800;">Output Text</p>
+        <div id="sentence-display" class="sentence-display">Start signing to see text...</div>
+        
+        <div class="action-buttons">
+          <button id="btn-space" class="btn" style="background: var(--glass); color: white; border: 1px solid var(--glass-border);">Add Space</button>
+          <button id="btn-backspace" class="btn" style="background: var(--glass); color: white; border: 1px solid var(--glass-border);">Backspace</button>
+          <button id="btn-clear" class="btn" style="grid-column: span 2; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2);">Clear All</button>
+        </div>
+        
+        <button id="btn-speak" class="btn btn-primary" style="margin-top: 15px;">Speak Text</button>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <script src="asl_engine.js"></script>
+</body>
+</html>
