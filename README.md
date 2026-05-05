@@ -42,7 +42,7 @@ A real-time, browser-based American Sign Language (ASL) interpreter that uses AI
 **Architecture Images:**
  
 
-![Architecture Diagram](/arci5.png)
+![Architecture Diagram](/archi5.png)
 
 ---
 
